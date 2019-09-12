@@ -16,12 +16,17 @@ import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
  * This is an example of an integration test with a mocked dependency.
+ * The Parcel object can be mocked through the AndroidJUnit4 runner so we do not have to use
+ * a mocking framework like Mockito
  */
 @RunWith(AndroidJUnit4.class)
 public class ParcelIntegrationTest {
 
     @Test
     public void givenAnItemTypeInfo_whenParcelling_thenCorrect() {
+
+        // Arrange
+        // create one source of testdata used in this method
         final String topicId = "topicParcelTest";
         final String title = "This is the parcel integration test";
 
@@ -30,13 +35,18 @@ public class ParcelIntegrationTest {
         itemTypeInfo.writeToParcel(parcel, itemTypeInfo.describeContents());
         parcel.setDataPosition(0);
 
+        // Act
         ItemTypeInfo createdFromParcel = itemTypeInfo.CREATOR.createFromParcel(parcel);
+
+        // Assert
         assertThat(createdFromParcel.getTopicId(), is(topicId));
         assertThat(createdFromParcel.getTitle(), is(title));
     }
 
     @Test
-    public void givenAnNoteInfo_whenParcelling_thenCorrect() {
+    public void givenANoteInfo_whenParcelling_thenCorrect() {
+
+        // Arrange
         final String title = "noteParcelTest";
         final String text = "This is the note integration test";
 
@@ -47,7 +57,10 @@ public class ParcelIntegrationTest {
         noteInfo.writeToParcel(parcel, noteInfo.describeContents());
         parcel.setDataPosition(0);
 
+        // Act
         NoteInfo createdFromParcel = noteInfo.CREATOR.createFromParcel(parcel);
+
+        // Assert
         assertThat(createdFromParcel.getTitle(), is(title));
         assertThat(createdFromParcel.getText(), is(text));
         assertThat(createdFromParcel.getTopic(), is(itemTypeInfo));
