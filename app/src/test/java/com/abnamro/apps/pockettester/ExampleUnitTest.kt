@@ -1,4 +1,4 @@
-package com.abnamro.apps.referenceandroid
+package com.abnamro.apps.pockettester
 
 import org.junit.Test
 

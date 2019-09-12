@@ -1,30 +1,30 @@
-package com.jwhh.notekeeper;
+package com.abnamro.apps.pockettester;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 public final class NoteInfo implements Parcelable {
-    private CourseInfo mCourse;
+    private ItemTypeInfo mCourse;
     private String mTitle;
     private String mText;
 
-    public NoteInfo(CourseInfo course, String title, String text) {
+    public NoteInfo(ItemTypeInfo course, String title, String text) {
         mCourse = course;
         mTitle = title;
         mText = text;
     }
 
     private NoteInfo(Parcel parcel) {
-        mCourse = parcel.readParcelable(CourseInfo.class.getClassLoader());
+        mCourse = parcel.readParcelable(ItemTypeInfo.class.getClassLoader());
         mTitle = parcel.readString();
         mText = parcel.readString();
     }
 
-    public CourseInfo getCourse() {
+    public ItemTypeInfo getCourse() {
         return mCourse;
     }
 
-    public void setCourse(CourseInfo course) {
+    public void setCourse(ItemTypeInfo course) {
         mCourse = course;
     }
 
@@ -80,8 +80,8 @@ public final class NoteInfo implements Parcelable {
         parcel.writeString(mText);
     }
 
-    public static final Parcelable.Creator<NoteInfo> CREATOR =
-            new Parcelable.Creator<NoteInfo>() {
+    public static final Creator<NoteInfo> CREATOR =
+            new Creator<NoteInfo>() {
                 @Override
                 public NoteInfo createFromParcel(Parcel parcel) {
                     return new NoteInfo(parcel);

@@ -1,13 +1,13 @@
-package com.jwhh.notekeeper;
+package com.abnamro.apps.pockettester;
 
 import android.os.Bundle;
 
 import androidx.lifecycle.ViewModel;
 
 public class NoteActivityViewModel extends ViewModel {
-    public static final String ORIGINAL_NOTE_COURSE_ID = "com.jwhh.notekeeper.ORIGINAL_NOTE_COURSE_ID";
-    public static final String ORIGINAL_NOTE_TITLE = "com.jwhh.notekeeper.ORIGINAL_NOTE_TITLE";
-    public static final String ORIGINAL_NOTE_TEXT = "com.jwhh.notekeeper.ORIGINAL_NOTE_TEXT";
+    public static final String ORIGINAL_NOTE_COURSE_ID = "com.abnamro.apps.pockettester.ORIGINAL_NOTE_COURSE_ID";
+    public static final String ORIGINAL_NOTE_TITLE = "com.abnamro.apps.pockettester.ORIGINAL_NOTE_TITLE";
+    public static final String ORIGINAL_NOTE_TEXT = "com.abnamro.apps.pockettester.ORIGINAL_NOTE_TEXT";
 
     public String mOriginalNoteCourseId;
     public String mOriginalNoteTitle;

@@ -1,4 +1,4 @@
-package com.jwhh.notekeeper;
+package com.abnamro.apps.pockettester;
 
 import android.os.Parcel;
 import android.os.Parcelable;

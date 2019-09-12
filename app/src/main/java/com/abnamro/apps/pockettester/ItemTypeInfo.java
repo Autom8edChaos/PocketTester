@@ -1,24 +1,23 @@
-package com.jwhh.notekeeper;
+package com.abnamro.apps.pockettester;
 
-import android.database.Cursor;
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public final class CourseInfo implements Parcelable {
+public final class ItemTypeInfo implements Parcelable {
     private final String mCourseId;
     private final String mTitle;
     private final List<ModuleInfo> mModules;
 
-    public CourseInfo(String courseId, String title, List<ModuleInfo> modules) {
+    public ItemTypeInfo(String courseId, String title, List<ModuleInfo> modules) {
         mCourseId = courseId;
         mTitle = title;
         mModules = modules;
     }
 
-    private CourseInfo(Parcel source) {
+    private ItemTypeInfo(Parcel source) {
         mCourseId = source.readString();
         mTitle = source.readString();
         mModules = new ArrayList<>();
@@ -69,7 +68,7 @@ public final class CourseInfo implements Parcelable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        CourseInfo that = (CourseInfo) o;
+        ItemTypeInfo that = (ItemTypeInfo) o;
 
         return mCourseId.equals(that.mCourseId);
 
@@ -91,17 +90,17 @@ public final class CourseInfo implements Parcelable {
         dest.writeTypedList(mModules);
     }
 
-    public static final Creator<CourseInfo> CREATOR =
-            new Creator<CourseInfo>() {
+    public static final Creator<ItemTypeInfo> CREATOR =
+            new Creator<ItemTypeInfo>() {
 
                 @Override
-                public CourseInfo createFromParcel(Parcel source) {
-                    return new CourseInfo(source);
+                public ItemTypeInfo createFromParcel(Parcel source) {
+                    return new ItemTypeInfo(source);
                 }
 
                 @Override
-                public CourseInfo[] newArray(int size) {
-                    return new CourseInfo[size];
+                public ItemTypeInfo[] newArray(int size) {
+                    return new ItemTypeInfo[size];
                 }
             };
 

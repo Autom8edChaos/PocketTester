@@ -1,21 +1,20 @@
-package com.jwhh.notekeeper;
+package com.abnamro.apps.pockettester;
 
 import android.content.Intent;
 import android.os.Bundle;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 import java.util.List;
 
-public class NoteListActivity extends AppCompatActivity {
+public class PocketTesterActivity extends AppCompatActivity {
 
     private ArrayAdapter<NoteInfo> mAdapterNotes;
 
@@ -30,7 +29,7 @@ public class NoteListActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(NoteListActivity.this, NoteActivity.class));
+                startActivity(new Intent(PocketTesterActivity.this, NoteActivity.class));
 
             }
         });
@@ -56,7 +55,7 @@ public class NoteListActivity extends AppCompatActivity {
         listNotes.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                Intent intent = new Intent(NoteListActivity.this, NoteActivity.class);
+                Intent intent = new Intent(PocketTesterActivity.this, NoteActivity.class);
 //                NoteInfo note = (NoteInfo) listNotes.getItemAtPosition(position);
                 intent.putExtra(NoteActivity.NOTE_POSITION, position);
                 startActivity(intent);
