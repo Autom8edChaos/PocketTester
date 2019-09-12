@@ -6,7 +6,7 @@ import java.util.List;
 public class DataManager {
     private static DataManager ourInstance = null;
 
-    private List<ItemTypeInfo> mCourses = new ArrayList<>();
+    private List<ItemTypeInfo> mTopics = new ArrayList<>();
     private List<NoteInfo> mNotes = new ArrayList<>();
 
     public static DataManager getInstance() {
@@ -49,31 +49,31 @@ public class DataManager {
         mNotes.remove(index);
     }
 
-    public List<ItemTypeInfo> getCourses() {
-        return mCourses;
+    public List<ItemTypeInfo> getTopics() {
+        return mTopics;
     }
 
-    public ItemTypeInfo getCourse(String id) {
-        for (ItemTypeInfo course : mCourses) {
-            if (id.equals(course.getCourseId()))
-                return course;
+    public ItemTypeInfo getTopic(String id) {
+        for (ItemTypeInfo topic : mTopics) {
+            if (id.equals(topic.getTopicId()))
+                return topic;
         }
         return null;
     }
 
-    public List<NoteInfo> getNotes(ItemTypeInfo course) {
+    public List<NoteInfo> getNotes(ItemTypeInfo topic) {
         ArrayList<NoteInfo> notes = new ArrayList<>();
         for(NoteInfo note:mNotes) {
-            if(course.equals(note.getCourse()))
+            if(topic.equals(note.getTopic()))
                 notes.add(note);
         }
         return notes;
     }
 
-    public int getNoteCount(ItemTypeInfo course) {
+    public int getNoteCount(ItemTypeInfo topic) {
         int count = 0;
         for(NoteInfo note:mNotes) {
-            if(course.equals(note.getCourse()))
+            if(topic.equals(note.getTopic()))
                 count++;
         }
         return count;
@@ -85,32 +85,32 @@ public class DataManager {
     //region Initialization code
 
     private void initializeCourses() {
-        mCourses.add(new ItemTypeInfo("Bug", "Application Bug", new ArrayList<ModuleInfo>()));
-        mCourses.add(new ItemTypeInfo("Idea", "Test Idea", new ArrayList<ModuleInfo>()));
-        mCourses.add(new ItemTypeInfo("Check", "Remember to Check", new ArrayList<ModuleInfo>()));
+        mTopics.add(new ItemTypeInfo("Bug", "Application Bug", new ArrayList<ModuleInfo>()));
+        mTopics.add(new ItemTypeInfo("Idea", "Test Idea", new ArrayList<ModuleInfo>()));
+        mTopics.add(new ItemTypeInfo("Check", "Remember to Check", new ArrayList<ModuleInfo>()));
     }
 
     public void initializeExampleNotes() {
         final DataManager dm = getInstance();
 
-        ItemTypeInfo course = dm.getCourse("Bug");
-        mNotes.add(new NoteInfo(course, "Double click an item",
+        ItemTypeInfo topic = dm.getTopic("Bug");
+        mNotes.add(new NoteInfo(topic, "Double click an item",
                 "Two notes will open"));
-        mNotes.add(new NoteInfo(course, "Remove Item",
+        mNotes.add(new NoteInfo(topic, "Remove Item",
                 "There is no way to remove an item"));
 
-        course = dm.getCourse("Idea");
-        mNotes.add(new NoteInfo(course, "Service default threads",
-                "Did you know that by default an Android Service will tie up the UI thread?"));
-        mNotes.add(new NoteInfo(course, "Long running operations",
-                "Foreground Services can be tied to a notification icon"));
+        topic = dm.getTopic("Idea");
+        mNotes.add(new NoteInfo(topic, "Import from API",
+                "When we can enter new notes from an item, we can finally manage our testdata!!!"));
+        mNotes.add(new NoteInfo(topic, "Delete All interface",
+                "When we import from API, we want to delete everything too in a convenient way!"));
 
-        course = dm.getCourse("Check");
-        mNotes.add(new NoteInfo(course, "Adding duplicate notes",
+        topic = dm.getTopic("Check");
+        mNotes.add(new NoteInfo(topic, "Adding duplicate notes",
                 "What would happen if you add two exactly the same notes?"));
-        mNotes.add(new NoteInfo(course, "Changing to duplicate note",
+        mNotes.add(new NoteInfo(topic, "Changing to duplicate note",
                 "What happens when you change a note that it becomes a duplicate one?"));
-        mNotes.add(new NoteInfo(course, "Emojis",
+        mNotes.add(new NoteInfo(topic, "Emojis",
                 "Can I add emoji's in my notes???"));
     }
     //endregion

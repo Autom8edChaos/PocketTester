@@ -20,7 +20,7 @@ public class NoteActivity extends AppCompatActivity {
         public static final int POSITION_NOT_SET = -1;
         private NoteInfo mNote;
         private boolean mIsNewNote;
-        private Spinner mSpinnerCourses;
+        private Spinner mSpinnerTopics;
         private EditText mTextNoteTitle;
         private EditText mTextNoteText;
         private int mNotePosition;
@@ -43,13 +43,13 @@ public class NoteActivity extends AppCompatActivity {
 
             mViewModel.mIsNewlyCreated = false;
 
-            mSpinnerCourses = findViewById(R.id.spinner_courses);
+            mSpinnerTopics = findViewById(R.id.spinner_topic);
 
-            List<ItemTypeInfo> courses = DataManager.getInstance().getCourses();
-            ArrayAdapter<ItemTypeInfo> adapterCourses =
+            List<ItemTypeInfo> courses = DataManager.getInstance().getTopics();
+            ArrayAdapter<ItemTypeInfo> adapterTopic =
                     new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, courses);
-            adapterCourses.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            mSpinnerCourses.setAdapter(adapterCourses);
+            adapterTopic.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+            mSpinnerTopics.setAdapter(adapterTopic);
 
             readDisplayStateValues();
             saveOriginalNoteValues();
@@ -58,13 +58,13 @@ public class NoteActivity extends AppCompatActivity {
             mTextNoteText = findViewById(R.id.text_note_text);
 
             if(!mIsNewNote)
-                displayNote(mSpinnerCourses, mTextNoteTitle, mTextNoteText);
+                displayNote(mSpinnerTopics, mTextNoteTitle, mTextNoteText);
         }
 
         private void saveOriginalNoteValues() {
             if(mIsNewNote)
                 return;
-            mViewModel.mOriginalNoteCourseId = mNote.getCourse().getCourseId();
+            mViewModel.mOriginalNoteCourseId = mNote.getTopic().getTopicId();
             mViewModel.mOriginalNoteTitle = mNote.getTitle();
             mViewModel.mOriginalNoteText = mNote.getText();
 
@@ -92,21 +92,21 @@ public class NoteActivity extends AppCompatActivity {
         }
 
         private void storePreviousNoteValues() {
-            ItemTypeInfo course = DataManager.getInstance().getCourse(mViewModel.mOriginalNoteCourseId);
+            ItemTypeInfo course = DataManager.getInstance().getTopic(mViewModel.mOriginalNoteCourseId);
             mNote.setCourse(course);
             mNote.setTitle(mViewModel.mOriginalNoteTitle);
             mNote.setText(mViewModel.mOriginalNoteText);
         }
 
         private void saveNote() {
-            mNote.setCourse((ItemTypeInfo) mSpinnerCourses.getSelectedItem());
+            mNote.setCourse((ItemTypeInfo) mSpinnerTopics.getSelectedItem());
             mNote.setTitle(mTextNoteTitle.getText().toString());
             mNote.setText(mTextNoteText.getText().toString());
         }
 
         private void displayNote(Spinner spinnerCourses, EditText textNoteTitle, EditText textNoteText) {
-            List<ItemTypeInfo> courses = DataManager.getInstance().getCourses();
-            int courseIndex = courses.indexOf(mNote.getCourse());
+            List<ItemTypeInfo> courses = DataManager.getInstance().getTopics();
+            int courseIndex = courses.indexOf(mNote.getTopic());
             spinnerCourses.setSelection(courseIndex);
             textNoteTitle.setText(mNote.getTitle());
             textNoteText.setText(mNote.getText());
@@ -156,7 +156,7 @@ public class NoteActivity extends AppCompatActivity {
         }
 
         private void sendEmail() {
-            ItemTypeInfo course = (ItemTypeInfo) mSpinnerCourses.getSelectedItem();
+            ItemTypeInfo course = (ItemTypeInfo) mSpinnerTopics.getSelectedItem();
             String subject = mTextNoteTitle.getText().toString();
             String text = "PocketTester says: this is important \"" +
                     course.getTitle() + "\"\n" + mTextNoteText.getText();

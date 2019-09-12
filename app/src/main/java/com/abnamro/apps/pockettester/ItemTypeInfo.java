@@ -7,25 +7,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class ItemTypeInfo implements Parcelable {
-    private final String mCourseId;
+    private final String mTopicId;
     private final String mTitle;
     private final List<ModuleInfo> mModules;
 
-    public ItemTypeInfo(String courseId, String title, List<ModuleInfo> modules) {
-        mCourseId = courseId;
+    public ItemTypeInfo(String topicId, String title, List<ModuleInfo> modules) {
+        mTopicId = topicId;
         mTitle = title;
         mModules = modules;
     }
 
     private ItemTypeInfo(Parcel source) {
-        mCourseId = source.readString();
+        mTopicId = source.readString();
         mTitle = source.readString();
         mModules = new ArrayList<>();
         source.readTypedList(mModules, ModuleInfo.CREATOR);
     }
 
-    public String getCourseId() {
-        return mCourseId;
+    public String getTopicId() {
+        return mTopicId;
     }
 
     public String getTitle() {
@@ -70,13 +70,13 @@ public final class ItemTypeInfo implements Parcelable {
 
         ItemTypeInfo that = (ItemTypeInfo) o;
 
-        return mCourseId.equals(that.mCourseId);
+        return mTopicId.equals(that.mTopicId);
 
     }
 
     @Override
     public int hashCode() {
-        return mCourseId.hashCode();
+        return mTopicId.hashCode();
     }
     @Override
     public int describeContents() {
@@ -85,7 +85,7 @@ public final class ItemTypeInfo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mCourseId);
+        dest.writeString(mTopicId);
         dest.writeString(mTitle);
         dest.writeTypedList(mModules);
     }

@@ -20,7 +20,7 @@ public final class NoteInfo implements Parcelable {
         mText = parcel.readString();
     }
 
-    public ItemTypeInfo getCourse() {
+    public ItemTypeInfo getTopic() {
         return mCourse;
     }
 
@@ -45,7 +45,7 @@ public final class NoteInfo implements Parcelable {
     }
 
     private String getCompareKey() {
-        return mCourse.getCourseId() + "|" + mTitle + "|" + mText;
+        return mCourse.getTopicId() + "|" + mTitle + "|" + mText;
     }
 
     @Override
