@@ -6,6 +6,12 @@ import java.util.LinkedList;
 
 import static org.junit.Assert.*;
 
+/*
+ * Example of an Unit test in the Java language
+ * The Notes are tested in isolation, we do not refer or store data in the DataManager (that would
+ * be an external dependency).
+ */
+
 public class NoteInfoTest {
 
     private NoteInfo mNote;
