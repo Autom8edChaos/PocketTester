@@ -4,28 +4,28 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public final class NoteInfo implements Parcelable {
-    private ItemTypeInfo mCourse;
+    private ItemTypeInfo mTopic;
     private String mTitle;
     private String mText;
 
-    public NoteInfo(ItemTypeInfo course, String title, String text) {
-        mCourse = course;
+    public NoteInfo(ItemTypeInfo mTopic, String title, String text) {
+        this.mTopic = mTopic;
         mTitle = title;
         mText = text;
     }
 
     private NoteInfo(Parcel parcel) {
-        mCourse = parcel.readParcelable(ItemTypeInfo.class.getClassLoader());
+        mTopic = parcel.readParcelable(ItemTypeInfo.class.getClassLoader());
         mTitle = parcel.readString();
         mText = parcel.readString();
     }
 
     public ItemTypeInfo getTopic() {
-        return mCourse;
+        return mTopic;
     }
 
-    public void setCourse(ItemTypeInfo course) {
-        mCourse = course;
+    public void setTopic(ItemTypeInfo topic) {
+        mTopic = topic;
     }
 
     public String getTitle() {
@@ -45,7 +45,7 @@ public final class NoteInfo implements Parcelable {
     }
 
     private String getCompareKey() {
-        return mCourse.getTopicId() + "|" + mTitle + "|" + mText;
+        return mTopic.getTopicId() + ": " + mTitle + "\r\n" + mText;
     }
 
     @Override
@@ -75,7 +75,7 @@ public final class NoteInfo implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeParcelable(mCourse, 0);
+        parcel.writeParcelable(mTopic, 0);
         parcel.writeString(mTitle);
         parcel.writeString(mText);
     }

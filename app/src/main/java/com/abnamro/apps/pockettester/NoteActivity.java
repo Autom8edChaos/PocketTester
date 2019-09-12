@@ -93,13 +93,13 @@ public class NoteActivity extends AppCompatActivity {
 
         private void storePreviousNoteValues() {
             ItemTypeInfo course = DataManager.getInstance().getTopic(mViewModel.mOriginalNoteCourseId);
-            mNote.setCourse(course);
+            mNote.setTopic(course);
             mNote.setTitle(mViewModel.mOriginalNoteTitle);
             mNote.setText(mViewModel.mOriginalNoteText);
         }
 
         private void saveNote() {
-            mNote.setCourse((ItemTypeInfo) mSpinnerTopics.getSelectedItem());
+            mNote.setTopic((ItemTypeInfo) mSpinnerTopics.getSelectedItem());
             mNote.setTitle(mTextNoteTitle.getText().toString());
             mNote.setText(mTextNoteText.getText().toString());
         }
