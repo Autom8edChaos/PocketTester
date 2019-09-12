@@ -15,4 +15,26 @@ PS. We don't expect you to spend weeks (and sleepless nights) on doing it. Lets 
 
 PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
 
+# Start
+
+After the first look at the code behind the assignment, it looked quite empty. There is not much fun in testing an application that does almost nothing, so we need to change
+that. After some thinking I wanted to make a Note Taking app that could be handy during testing. I remembered the Course Note app from Jim Wilson and thought "Why not,
+lets create an app first with the help of that material!"
+
+# PocketTester
+
+You are sitting in the train home. While dozing away a little, suddenly a great test idea pops up in your mind: "If we can mock the HTTP calls, we can test every state in
+the App without having to setup testdata on the server!". You want to note that idea down and maybe share it with someone, but how? Well, now there is an app for that: PocketTester!
+
+Do you encounter a bug and want to quickly write it down, use PocketTester!  
+Do you want to share your test check list with your collegues, just mail it to them with PocketTester!  
+Did a brilliant idea pop up during an extended bathroom visit and you want to remember it later? Use PocketTester!
+
+
+
+# Idea
+
+
+# Future improvements
+
 
