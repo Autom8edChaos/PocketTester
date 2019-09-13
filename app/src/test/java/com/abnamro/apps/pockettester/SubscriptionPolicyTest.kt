@@ -121,7 +121,7 @@ class SubscriptionPolicyTest {
     @Test
     fun givenNotesOverWarningAmount_whenCheckingForWarning_thenWarning() {
         // Arrange
-        `when`(settingsMock.warningAmount).thenReturn(16)
+        `when`(settingsMock.warningAmount).thenReturn(14)
 
         // Act
         var showWarning = subscriptionPolicy.shouldShowWarning()
