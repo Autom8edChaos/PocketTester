@@ -64,7 +64,7 @@ public class NoteActivity extends AppCompatActivity {
         private void saveOriginalNoteValues() {
             if(mIsNewNote)
                 return;
-            mViewModel.mOriginalNoteCourseId = mNote.getTopic().getTopicId();
+            mViewModel.mOriginalNoteTopicId = mNote.getTopic().getTopicId();
             mViewModel.mOriginalNoteTitle = mNote.getTitle();
             mViewModel.mOriginalNoteText = mNote.getText();
 
@@ -92,8 +92,8 @@ public class NoteActivity extends AppCompatActivity {
         }
 
         private void storePreviousNoteValues() {
-            ItemTypeInfo course = DataManager.getInstance().getTopic(mViewModel.mOriginalNoteCourseId);
-            mNote.setTopic(course);
+            ItemTypeInfo topic = DataManager.getInstance().getTopic(mViewModel.mOriginalNoteTopicId);
+            mNote.setTopic(topic);
             mNote.setTitle(mViewModel.mOriginalNoteTitle);
             mNote.setText(mViewModel.mOriginalNoteText);
         }
@@ -156,10 +156,10 @@ public class NoteActivity extends AppCompatActivity {
         }
 
         private void sendEmail() {
-            ItemTypeInfo course = (ItemTypeInfo) mSpinnerTopics.getSelectedItem();
+            ItemTypeInfo topic = (ItemTypeInfo) mSpinnerTopics.getSelectedItem();
             String subject = mTextNoteTitle.getText().toString();
             String text = "PocketTester says: this is important \"" +
-                    course.getTitle() + "\"\n" + mTextNoteText.getText();
+                    topic.getTitle() + "\"\n" + mTextNoteText.getText();
             Intent intent = new Intent(Intent.ACTION_SEND);
             intent.setType("message/rfc2822");
             intent.putExtra(Intent.EXTRA_SUBJECT, subject);
