@@ -3,7 +3,7 @@ package com.abnamro.apps.pockettester;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataManager {
+public class DataManager implements IDataManager {
     private static DataManager ourInstance = null;
 
     private List<ItemTypeInfo> mTopics = new ArrayList<>();
@@ -49,6 +49,7 @@ public class DataManager {
         mNotes.remove(index);
     }
 
+    @Override
     public List<ItemTypeInfo> getTopics() {
         return mTopics;
     }
@@ -70,6 +71,7 @@ public class DataManager {
         return notes;
     }
 
+    @Override
     public int getNoteCount(ItemTypeInfo topic) {
         int count = 0;
         for(NoteInfo note:mNotes) {
@@ -101,7 +103,7 @@ public class DataManager {
 
         topic = dm.getTopic("Idea");
         mNotes.add(new NoteInfo(topic, "Import from API",
-                "When we can enter new notes from an item, we can finally manage our testdata!!!"));
+                "When we can enter new notes from an API, we can remotely manage our testdata!!!"));
         mNotes.add(new NoteInfo(topic, "Delete All interface",
                 "When we import from API, we want to delete everything too in a convenient way!"));
 

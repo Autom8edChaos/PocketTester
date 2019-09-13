@@ -1,7 +1,7 @@
 package com.abnamro.apps.pockettester.Integration;
 
 import android.os.Parcel;
-import android.support.test.runner.AndroidJUnit4;
+import androidx.test.runner.AndroidJUnit4;
 import com.abnamro.apps.pockettester.ItemTypeInfo;
 import com.abnamro.apps.pockettester.ModuleInfo;
 import com.abnamro.apps.pockettester.NoteInfo;

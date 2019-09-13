@@ -103,9 +103,28 @@ amount of them, writing good integration tests is very hard:
 - The scope of an integration test is often too broad or too narrow
 - For mocking multiple application layers, you need to have a good architecture that every developer understand and applies
 
-For this assignment, I wrote an integration test on Parcel object. It shows:
+For this assignment, I wrote an integration test on the Parcel object. It shows:
 - The mocking of an external dependency
 - How to setup and use a mocked object
 - The verification of results that comes back from a mocked object
 
- 
+## Applying SOLID Principles and Testing with Mocks
+
+The Subscription Policy showcases why we want to use SOLID principles. It is a class that uses dependency injection to acquire inversion of control. 
+This is very valuable for testing, because now, the dependencies can be mocked.
+
+Why do you want that?
+For example: We have no control over the DataManager and the amount of notes that are in there. The DataManager can be an interface to a database, 
+a cloud storage or maybe a file. But for your testcases, you always want to get the same amount of notes to validate the policy. Therefore we are
+creating a mock that will always return the same amount of notes.
+  
+Mocking works also greate for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation.
+Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
+
+For this showcase, I wrote a new SubscriptionPolicy class, two interfaces and the unit tests in SubscriptionPolicyTest. It shows:
+- Understanding of dependency injection and inversion of control 
+- The application of interfaces
+- The use of Mocks in your tests
+- Creating independent, fast tests with always the same result
+- The application of the Mockito library
+
