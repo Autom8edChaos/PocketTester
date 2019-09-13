@@ -23,19 +23,16 @@ in the nature can sometimes be more of value than a day in a meeting room), I de
 
 # PocketTester
 
-You are sitting in the train on your daily commute. While dozing away a little, suddenly a great test idea pops up in your head: "If we can mock the HTTP calls, we can test every state in
+You are sitting in the train on your daily commute. While dozing off a little, you suddenly open your eyes. A great test idea just popped up in your head: "If we can mock the HTTP calls, we can test every state in
 the App without having to setup testdata on the server!". You want to note that idea down and directly share it with you colleagues, but how? Well, there is an app for that: PocketTester!
 
 PocketTester, now you can write down your bugs, checks or test ideas; anytime, anywhere.
 
 ## Implementation
 
-PocketTester is loosely based on the tutorial app "Course NoteKeeper" of [Jim Wilson](https://jwhh.com/). I implemented the adaptations myself for this assignment to have
-a fun little toy application to fiddle around with. The app contains some basic functionality, but because it is nowhere near finished it will limit the scope for test 
-automation and mimics an application in full development.  
-Because the app is partially build on existing code, there are already some components that are not used (CourseModules), that are a bit clumsy (ItemTypeInfo) or that
-apply a pattern I would never implement that way (DataManager). That is great too, because it creates challenges you would encounter as a test automation engineer in 
-normal day to day work.
+PocketTester is loosely based on the tutorial app "Course NoteKeeper" of [Jim Wilson](https://jwhh.com/). I implemented the adaptations myself for this assignment to have a fun little toy application to fiddle around with. The app contains some basic functionality, but because it is nowhere near finished it will limit the scope for test automation and mimics an application in early development.  
+
+Because the app is partially build on existing code, there are already some components that are not used (CourseModules), that are a bit clumsy (ItemTypeInfo) or that apply a pattern I would never implement that way (DataManager). That is great too, because it creates challenges you would encounter as a test automation engineer in a normal days work.
 
 # Installation
 
@@ -54,22 +51,23 @@ To startup the application:
 - Click the green Play button
 
 To run the unit tests:
-- From the top bar, Select "All Unit Tests"
-- Click the green Play button
+- View the application in "Android View"
+- Open App > Java and try to see the package `com.abnamro.apps.pockettester (test)`
+- Right click on it and click the green Play button next to "Run tests in 'pockettester'"
 
 To run all instrumented tests (integration and UI):
-- From the top bar, Select "All Instrumented Tests"
 - From the top bar, select a valid emulation device like the Pixel 2 API 28
-- Click the green Play button
-
+- View the application in "Android View"
+- Open App > Java and try to see the package `com.abnamro.apps.pockettester (androidTest)`
+- Right click on it and click the green Play button next to "Run 'All Instrumented tests'"
+ 
 # Showcases
 
-## Development skills
+## 1. Development skills
 
-In my opinion, a test automation engineer should not be afraid to get his hands dirty on code. Therefor I wanted to design and implement this application myself to
-show that I am proficient in the following topics:
+In my opinion, a test automation engineer should not be afraid to get his hands dirty on code. Therefor I wanted to design and implement this application myself to show that I am proficient in the following topics:
 - Reading and understanding existing code
-- Writing code myself
+- Writing code
 - Understand IDE's like Android Studio and IntelliJ
 - Understand build tools and dependency managers like Gradle and Maven
 - Understand how to run and debug production code
@@ -77,7 +75,7 @@ show that I am proficient in the following topics:
 - Usage of source control and version management systems like Git, Github and SourceTree 
 - Understand how commits, pushes, pulls and branching works
 
-## Unit testing
+## 2. Unit testing
 
 While unit tests are the domain of the software developer, test automation engineers should really know how to write good unit tests so they can train and assist developers,
 write additional tests if they are lacking and to understand which parts of the application is not covered. A test automation engineer should be proficient in the use
@@ -90,10 +88,9 @@ For this assignment I wrote two unit test classes, one in Java and one in Kotlin
 - How to apply proper test naming
 - Proper use of the JUnit assertion library
 
-Unit tests are the bottom of the test automation pyramid. There should be a lot of them and comply to the FIRST principles of Unit testing (Fast, Isolated, 
-Repeatable, Self-Validating, Thorough)
+Unit tests are the bottom of the test automation pyramid. There should be a lot of them and comply to the FIRST principles of Unit testing (Fast, Isolated, Repeatable, Self-Validating, Thorough)
 
-## Integration testing
+## 3. Integration testing
 
 Integration tests are tests where individual units are combined and tested as a group. Components that are not under test should be mocked so that they are
 not causing flakiness by interference with the components under test. In my opinion, integration tests are one of the most difficult test types. While you need a good
@@ -108,7 +105,7 @@ For this assignment, I wrote an integration test on the Parcel object. It shows:
 - How to setup and use a mocked object
 - The verification of results that comes back from a mocked object
 
-## Applying SOLID Principles and Testing with Mocks
+## 4. Applying SOLID Principles and Testing with Mocks
 
 The Subscription Policy showcases why we want to use SOLID principles. It is a class that uses dependency injection to acquire inversion of control. 
 This is very valuable for testing, because now, the dependencies can be mocked.
@@ -127,4 +124,18 @@ For this showcase, I wrote a new SubscriptionPolicy class, two interfaces and th
 - The use of Mocks in your tests
 - Creating independent, fast tests with always the same result
 - The application of the Mockito library
+
+## 5. The Icing on the Cake: Creating UI Tests
+This showcase shows the application of UI tests on PocketTester. It is the last showcase for a reason: It is recommended to implement the UI tests after the unit tests and integration tests are build for a feature. Now the team does have a better understanding of the application and all issues that could be found by the lower level tests are ironed out. The scope of the UI test is more clear and we can re-use code that was used for the other tests.
+However, you'll see that the tests in the UI tests are not completely UI driven. The first test, creating a new note, will enter a new note through the UI, but the test will check the existence of the note in the DataManager.
+The second test will first fetch the data from the DataManager, then click on the same test in the overview and compare the details to see if the detail screen is correctly implemented.
+By keeping the UI actions minimized, we get maintainable, stable and relative fast tests.
+
+In the NoteUITest shows:
+- The application of the AAA (Arrange, Act, Assert) pattern
+- The usage of Espresso patterns to interact with objects
+- The usage of Matchers to find the right type of objects and data
+- Tests that cleanup after themselves
+- The combined use of UI actions and non-UI actions for stable tests
+
 
