@@ -1,6 +1,5 @@
 package com.abnamro.apps.pockettester
 
-import android.os.Parcel
 import org.junit.Test
 
 import org.junit.Assert.*
