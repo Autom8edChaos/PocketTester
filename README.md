@@ -15,11 +15,13 @@ PS. We don't expect you to spend weeks (and sleepless nights) on doing it. Lets 
 
 PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
 
-# Start
+# Introduction
 
-After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. 
-And of course, there is not much fun in testing an application that does almost nothing, so we need a proper application to test on. After some thinking (doing a run outside 
-in the nature can sometimes be more of value than a day in a meeting room), I decided that I wanted to make a Note Taking app that could be used during testing. 
+After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need a proper application to test on. After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. 
+
+And of course that App, PocketTester, needs to be tested. In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found down here. 
+
+Due to the time constraints I will only focus on automated (functional) tests. There will be things that I really like but have to skip: static analysis tools, build pipelines, multi device testing and test approaches that encourage collaboration like Behaviour Driven Development.
 
 # PocketTester
 
@@ -44,6 +46,9 @@ Because the app is partially build on existing code, there are already some comp
 
 ## Quick Start
 
+1. Clone the project or download the zip.
+2. Open Android Studio and open the project
+
 To startup the application:
 - Wait until Gradle is ready with retrieving dependencies and building the app
 - From the top bar, select App
@@ -65,71 +70,69 @@ To run all instrumented tests (integration and UI):
 
 ## 1. Development skills
 
-In my opinion, a test automation engineer should not be afraid to get his hands dirty on code. Therefor I wanted to design and implement this application myself to show that I am proficient in the following topics:
+In my opinion, a test automation engineer should not be afraid to get his hands dirty on code. Therefore I wanted to design and implement this application myself to show that I am proficient in the following topics:
 - Reading and understanding existing code
 - Writing code
-- Understand IDE's like Android Studio and IntelliJ
+- Understand IDEs like Android Studio and IntelliJ
 - Understand build tools and dependency managers like Gradle and Maven
 - Understand how to run and debug production code
-- Can find solutions for challenges I am facing
 - Usage of source control and version management systems like Git, Github and SourceTree 
-- Understand how commits, pushes, pulls and branching works
+- Understand how commits, push/pull, branching and merging works
 
 ## 2. Unit testing
 
 While unit tests are the domain of the software developer, test automation engineers should really know how to write good unit tests so they can train and assist developers,
-write additional tests if they are lacking and to understand which parts of the application is not covered. A test automation engineer should be proficient in the use
-of code coverage tooling to get an idea of the parts in the application that are covered well and parts that are potentially vulnerable. 
+write additional tests if they are lacking and to understand which parts of the application are sufficiently covered or not. A test automation engineer should be proficient in the use
+of code coverage tooling to get an idea of the parts in the application that are covered well and parts that are potentially vulnerable to bugs. 
 
-For this assignment I wrote two unit test classes, one in Java and one in Kotlin that shows:
+For this assignment I wrote two unit test classes, one in Java for `NoteInfoTest` and one in Kotlin for `ItemTypeInfoTest`. They show:
 - Test setup and teardown
 - How to test objects in isolation
 - That unit tests should be narrowly scoped 
 - How to apply proper test naming
 - Proper use of the JUnit assertion library
 
-Unit tests are the bottom of the test automation pyramid. There should be a lot of them and comply to the FIRST principles of Unit testing (Fast, Isolated, Repeatable, Self-Validating, Thorough)
+Unit tests are the bottom of the test automation pyramid. There should be a lot of them and comply to the F.I.R.S.T. principles of Unit testing (Fast, Isolated, Repeatable, Self-Validating, Thorough)
 
 ## 3. Integration testing
 
-Integration tests are tests where individual units are combined and tested as a group. Components that are not under test should be mocked so that they are
-not causing flakiness by interference with the components under test. In my opinion, integration tests are one of the most difficult test types. While you need a good
-amount of them, writing good integration tests is very hard: 
+Integration tests are tests where individual units are combined and tested as a group. Components that are not under test should be mocked so that they are not causing flakiness by interference with the components under test. In my opinion, integration tests are one of the most difficult test types. While you need a good amount of them, writing good integration tests is very hard because: 
 - It is a team or even inter-team activity (who is responsible?) 
 - When creating integration tests, you need to know the SUT very well
 - The scope of an integration test is often too broad or too narrow
-- For mocking multiple application layers, you need to have a good architecture that every developer understand and applies
+- For testing and mocking multiple application layers, you need to have a good architecture that every developer understand and applies
 
-For this assignment, I wrote an integration test on the Parcel object. It shows:
+For this assignment, I wrote an integration test on the external Parcel object. It shows:
 - The mocking of an external dependency
 - How to setup and use a mocked object
 - The verification of results that comes back from a mocked object
 
+Integration tests are the middle layer of the test automation pyramid. There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
+
 ## 4. Applying SOLID Principles and Testing with Mocks
 
-The Subscription Policy showcases why we want to use SOLID principles. It is a class that uses dependency injection to acquire inversion of control. 
-This is very valuable for testing, because now, the dependencies can be mocked.
+The Subscription Policy showcases why we want to use SOLID principles. It is a class that uses dependency injection to acquire inversion of control. This is very valuable for testing, because now, the dependencies can be mocked.
 
 Why do you want that?
-For example: We have no control over the DataManager and the amount of notes that are in there. The DataManager can be an interface to a database, 
-a cloud storage or maybe a file. But for your testcases, you always want to get the same amount of notes to validate the policy. Therefore we are
-creating a mock that will always return the same amount of notes.
+For example: We have no control over the DataManager and the amount of notes that are in there. The DataManager can be an interface to a database, a cloud storage or maybe a file. But for your testcases, you always want to get the same amount of notes to validate the policy. Therefore we are creating a mock that will always return the same amount of notes.
   
-Mocking works also greate for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation.
-Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
+Mocking works also greate for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation. Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
 
-For this showcase, I wrote a new SubscriptionPolicy class, two interfaces and the unit tests in SubscriptionPolicyTest. It shows:
+For this showcase, I wrote a new SubscriptionPolicy class in Kotlin, two interfaces and the unit tests in SubscriptionPolicyTest (in Kotlin too). It shows:
 - Understanding of dependency injection and inversion of control 
 - The application of interfaces
-- The use of Mocks in your tests
-- Creating independent, fast tests with always the same result
+- The use of Mocks in unit/integration tests
+- How to create independent, fast tests with always the same result
 - The application of the Mockito library
 
 ## 5. The Icing on the Cake: Creating UI Tests
+
 This showcase shows the application of UI tests on PocketTester. It is the last showcase for a reason: It is recommended to implement the UI tests after the unit tests and integration tests are build for a feature. Now the team does have a better understanding of the application and all issues that could be found by the lower level tests are ironed out. The scope of the UI test is more clear and we can re-use code that was used for the other tests.
 However, you'll see that the tests in the UI tests are not completely UI driven. The first test, creating a new note, will enter a new note through the UI, but the test will check the existence of the note in the DataManager.
 The second test will first fetch the data from the DataManager, then click on the same test in the overview and compare the details to see if the detail screen is correctly implemented.
 By keeping the UI actions minimized, we get maintainable, stable and relative fast tests.
+
+For these test, I used the native Espresso library because it is the de facto UI test library for Android. A quick pilot with the build-in TestingBluePrint template project showed me that the Espresso library is way faster then competing libraries like UiAutomator and Selenium type of libraries like Appium or Selendroid.   
 
 In the NoteUITest shows:
 - The application of the AAA (Arrange, Act, Assert) pattern
@@ -138,4 +141,11 @@ In the NoteUITest shows:
 - Tests that cleanup after themselves
 - The combined use of UI actions and non-UI actions for stable tests
 
+# Afterthoughts
 
+This was a fun assignment to do. I timeboxed the project at 8 hours of coding and used another 2 hours for documenting it properly. I am happy with the results and how the showcases have come into being. I learned a lot with this assignment: How Gradle is used, the Kotlin programming language, Android Studio, Espresso and other Android-own libraries.
+With each approach in this project, with every decision, there is a certain philosophy behind. It would be too much for both the reader as the writer to get into that amount of details, but if there are any questions, I am happy to answer them.
+
+Bas M. Dam
+Test Automation Specialist
+bas.dam@performancearchitecten.nl
