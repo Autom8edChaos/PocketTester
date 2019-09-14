@@ -28,13 +28,17 @@ Due to the time constraints I will only focus on automated (functional) tests. T
 You are sitting in the train on your daily commute. While dozing off a little, you suddenly open your eyes. A great test idea just popped up in your head: "If we can mock the HTTP calls, we can test every state in
 the App without having to setup testdata on the server!". You want to note that idea down and directly share it with you colleagues, but how? Well, there is an app for that: PocketTester!
 
+![Notes Overview Screen](/images/PockerTester_overview.png)
+![Notes Entry Screen](/images/PocketTester_new_note.png)
+
+
 PocketTester, now you can write down your bugs, checks or test ideas; anytime, anywhere.
 
 ## Implementation
 
 PocketTester is loosely based on the tutorial app "Course NoteKeeper" of [Jim Wilson](https://jwhh.com/). I implemented the adaptations myself for this assignment to have a fun little toy application to tinker around with. The app contains basic functionality, but because it is nowhere near finished it will limit the scope for test automation and mimics an application in early development.  
 
-Because the app is partially build on existing code, there are already some components that are not used (CourseModules), that are a bit clumsy (ItemTypeInfo) or that apply a pattern I would never implement that way (DataManager). That is great too, because it creates challenges you would encounter as a test automation engineer in a normal days work.
+Because the app is partially build on existing code, there are already some components that are not used ([ModulesInfo](/app/src/main/java/com/abnamro/apps/pockettester/ModuleInfo.java)), that are a bit clumsy ([ItemTypeInfo](/app/src/main/java/com/abnamro/apps/pockettester/ItemTypeInfo.java)) or that apply a pattern I would never implement that way ([DataManager](/app/src/main/java/com/abnamro/apps/pockettester/DataManager.java)). That is great too, because it creates challenges you would encounter as a test automation engineer in a normal days work.
 
 # Installation
 
@@ -55,17 +59,23 @@ To startup the application:
 - From the top bar, select a valid emulation device like the Pixel 2 API 28
 - Click the green Play button
 
+![Run Unit Tests](/images/run_App.png)
+
 To run the unit tests:
 - View the application in "Android View"
 - Open App > Java and try to see the package `com.abnamro.apps.pockettester (test)`
 - Right click on it and click the green Play button next to "Run tests in 'pockettester'"
+
+![Run Unit Tests](/images/run_unitTests.png)
 
 To run all instrumented tests (integration and UI):
 - From the top bar, select a valid emulation device like the Pixel 2 API 28
 - View the application in "Android View"
 - Open App > Java and try to see the package `com.abnamro.apps.pockettester (androidTest)`
 - Right click on it and click the green Play button next to "Run 'All Instrumented tests'"
- 
+
+![Run Instrumented Tests](/images/run_androidTests.png)
+
 # Showcases
 
 ## 1. Development skills
@@ -79,14 +89,15 @@ In my opinion, a test automation engineer should not be afraid to get his hands 
 - Usage of source control and version management systems like Git, Github and SourceTree 
 - Understand how commits, push/pull, branching and merging works
 
+![Git Flow](/images/git_flow.png)  
+*The Git Flow of this Assignment*
+
 ## 2. Unit testing
 
-While unit tests are the domain of the software developer, test automation engineers should really know how to write good unit tests so they can train and assist developers,
-write additional tests if they are lacking and to understand which parts of the application are sufficiently covered or not. A test automation engineer should be proficient in the use
-of code coverage tooling to get an idea of the parts in the application that are covered well and parts that are potentially vulnerable to bugs. 
+While unit tests are the domain of the software developer, test automation engineers should really know how to write good unit tests so they can train and assist developers, write additional tests if they are lacking and to understand which parts of the application are sufficiently covered or not. A test automation engineer should be proficient in the use of code coverage tooling to get an idea of the parts in the application that are covered well and parts that are potentially vulnerable to bugs. 
 
-For this assignment I wrote two unit test classes, one in Java for `NoteInfoTest` and one in Kotlin for `ItemTypeInfoTest`. They show:
-- Test setup and teardown
+For this assignment I wrote two unit test classes, one in Java for [`NoteInfoTest`](/app/src/test/java/com/abnamro/apps/pockettester/NoteInfoTest.java) and one in Kotlin for [`ItemTypeInfoTest`](/app/src/test/java/com/abnamro/apps/pockettester/ItemTypeInfoTest.kt). They show:
+- [Test setup](/app/src/test/java/com/abnamro/apps/pockettester/NoteInfoTest.java#L22) and [teardown](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L44)
 - How to test objects in isolation
 - That unit tests should be narrowly scoped 
 - How to apply proper test naming
@@ -102,28 +113,25 @@ Integration tests are tests where individual units are combined and tested as a 
 - The scope of an integration test is often too broad or too narrow
 - For testing and mocking multiple application layers, you need to have a good architecture that every developer understand and applies
 
-For this assignment, I wrote an integration test on the external Parcel object. It shows:
-- The mocking of an external dependency
-- How to setup and use a mocked object
-- The verification of results that comes back from a mocked object
+For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test.
 
-Integration tests are the middle layer of the test automation pyramid. There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
+Integration tests are the middle layer of the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid). There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
 
 ## 4. Applying SOLID Principles and Testing with Mocks
 
-The Subscription Policy showcases why we want to use SOLID principles. It is a class that uses dependency injection to acquire inversion of control. This is very valuable for testing, because now, the dependencies can be mocked.
+The [Subscription Policy](/app/src/main/java/com/abnamro/apps/pockettester/SubscriptionPolicy.kt) showcases why we want to use [SOLID principles](https://en.wikipedia.org/wiki/SOLID). It is a class that uses [dependency injection](https://en.wikipedia.org/wiki/Dependency_injection) to acquire [inversion of control](https://en.wikipedia.org/wiki/Inversion_of_control). This is very valuable for testing, because now the dependencies can be mocked.
 
 Why do you want that?
-For example: We have no control over the DataManager and the amount of notes that are in there. The DataManager can be an interface to a database, a cloud storage or maybe a file. But for your testcases, you always want to get the same amount of notes to validate the policy. Therefore we are creating a mock that will always return the same amount of notes.
+For example: We have no control over the [DataManager](/app/src/main/java/com/abnamro/apps/pockettester/DataManager.java) and the amount of notes that are in there. The DataManager can be an interface to a database, a cloud storage or maybe a file. But for your testcases, you always want to get the same amount of notes to validate the policy. Therefore we are creating a mock that will always return the same amount of notes.
   
-Mocking works also greate for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation. Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
+Mocking works great too for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation. Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
 
-For this showcase, I wrote a new SubscriptionPolicy class in Kotlin, two interfaces and the unit tests in SubscriptionPolicyTest (in Kotlin too). It shows:
+For this showcase, I wrote a new [SubscriptionPolicy](/app/src/main/java/com/abnamro/apps/pockettester/DataManager.java) class in Kotlin, two interfaces and the unit tests in [SubscriptionPolicyTest](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt) in Kotlin too. It shows:
 - Understanding of dependency injection and inversion of control 
-- The application of interfaces
-- The use of Mocks in unit/integration tests
+- The application of [interfaces](/app/src/main/java/com/abnamro/apps/pockettester/IDataManager.java)
+- The use of [Mocks](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt#L34) in unit/integration tests
 - How to create independent, fast tests with always the same result
-- The application of the Mockito library
+- The application of the [Mockito](https://site.mockito.org/) library
 
 ## 5. The Icing on the Cake: Creating UI Tests
 
