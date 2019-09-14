@@ -78,7 +78,9 @@ To run all instrumented tests (integration and UI):
 
 # Showcases
 
-## 1. Development skills
+With this assignment, there is a lot to show. I ordered it in five showcases which you can find below. They will show my skills in Software Development, Unit Testing, Integration Testing, UI Testing and the use of proper design techniques to keep software maintainable, testable and extendable in order have an overall high quality state. 
+
+## 1. Software Development
 
 In my opinion, a test automation engineer should not be afraid to get his hands dirty on code. Therefore I wanted to design and implement this application myself to show that I am proficient in the following topics:
 - Reading and understanding existing code
@@ -113,7 +115,7 @@ Integration tests are tests where individual units are combined and tested as a 
 - The scope of an integration test is often too broad or too narrow
 - For testing and mocking multiple application layers, you need to have a good architecture that every developer understand and applies
 
-For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test.
+For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test. You can still find a mistake in the comments: at first I thought that the JUnit testrunner did the mocking of the object, later I learned that it uses the Parcel object itself. (You see, integration tests are complex material).
 
 Integration tests are the middle layer of the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid). There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
 
@@ -146,9 +148,9 @@ For these test, I used the native Espresso library because it is the de facto UI
 
 The NoteUITest will show:
 - The application of [the AAA](http://wiki.c2.com/?ArrangeActAssert) (Arrange, Act, Assert) pattern
-- The usage of Espresso patterns to interact with objects
-- The usage of Matchers to find the right type of objects and data
-- Tests that cleanup after themselves
+- The usage of [Espresso patterns](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L62) to interact with objects
+- The usage of [Matchers](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L96) to find the right type of objects and data
+- Tests that [cleanup](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L44) after themselves no matter if they pass or fail
 - The combined use of UI actions and non-UI actions for stable tests
 
 # Afterthoughts
@@ -157,21 +159,21 @@ This was a fun assignment to do. I timeboxed the project at 8 hours of coding an
 
 There is a lot more to do and we didn't even touch mobile specific test cases: screen orientation, gestures, slow/no data connections, app switching, etc. And still, there is already a lot of material here. I couldn't cover each decision or philosophy behind certain approaches. It would be too much for both the reader as the writer to get into that amount of details. However, if there are any questions, I am happy to answer them.
 
-Bas M. Dam
-Test Automation Specialist
+Bas M. Dam  
+Test Automation Specialist  
 bas.dam@performancearchitecten.nl
 
 # Reference Materials Used
 
-This is an incomplete list of reference materials I used during this assignment:
-[Android Studio Reference Guide](https://developer.android.com/studio/intro)
-[Android Documentation](https://developer.android.com/docs)
-[Kotlin Reference Guide](https://kotlinlang.org/docs/reference/)
-[Kotlin Cheat Sheet](https://blog.kotlin-academy.com/kotlin-cheat-sheet-1137588c75a)
-[JUnit Wiki](https://github.com/junit-team/junit4/wiki)
-[Working with Android Tools and Testing](https://app.pluralsight.com/library/courses/android-tools-testing/table-of-contents)
-[Android JUnit Parcelable model test](https://medium.com/@dbottillo/android-junit-parcelable-model-test-37a2f2ae18b1)
-[Using Android Parcel](https://dzone.com/articles/using-android-parcel)
+This is an incomplete list of reference materials I used during this assignment:  
+- [Android Studio Reference Guide](https://developer.android.com/studio/intro)
+- [Android Documentation](https://developer.android.com/docs)  
+- [Kotlin Reference Guide](https://kotlinlang.org/docs/reference/)
+- [Kotlin Cheat Sheet](https://blog.kotlin-academy.com/kotlin-cheat-sheet-1137588c75a)
+- [JUnit Wiki](https://github.com/junit-team/junit4/wiki)
+- [Working with Android Tools and Testing](https://app.pluralsight.com/library/courses/android-tools-testing/table-of-contents)
+- [Android JUnit Parcelable model test](https://medium.com/@dbottillo/android-junit-parcelable-model-test-37a2f2ae18b1)
+- [Using Android Parcel](https://dzone.com/articles/using-android-parcel)
 
 
 
