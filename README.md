@@ -31,8 +31,7 @@ the App without having to setup testdata on the server!". You want to note that 
 ![Notes Overview Screen](/images/PockerTester_overview.png)
 ![Notes Entry Screen](/images/PocketTester_new_note.png)
 
-
-PocketTester, now you can write down your bugs, checks or test ideas; anytime, anywhere.
+**_PocketTester, now you can write down your bugs, checks or test ideas; anytime, anywhere._**
 
 ## Implementation
 
@@ -105,7 +104,7 @@ For this assignment I wrote two unit test classes, one in Java for [`NoteInfoTes
 - How to apply proper test naming
 - Proper use of the JUnit assertion library
 
-Unit tests are the bottom of the test automation pyramid. There should be a lot of them and comply to the F.I.R.S.T. principles of Unit testing (Fast, Isolated, Repeatable, Self-Validating, Thorough)
+Unit tests are the bottom of the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid). There should be a lot of them and comply to the F.I.R.S.T. principles of Unit testing (Fast, Isolated, Repeatable, Self-Validating, Thorough)
 
 ## 3. Integration testing
 
@@ -117,7 +116,7 @@ Integration tests are tests where individual units are combined and tested as a 
 
 For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test. You can still find a mistake in the comments: at first I thought that the JUnit testrunner did the mocking of the object, later I learned that it uses the Parcel object itself. (You see, integration tests are complex material).
 
-Integration tests are the middle layer of the [test automation pyramid](https://martinfowler.com/articles/practical-test-pyramid.html#TheTestPyramid). There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
+Integration tests are the middle layer of the test automation pyramid. There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
 
 ## 4. Applying SOLID Principles and Testing with Mocks
 
