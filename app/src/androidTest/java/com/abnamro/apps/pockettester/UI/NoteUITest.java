@@ -8,10 +8,12 @@ import com.abnamro.apps.pockettester.NoteInfo;
 import com.abnamro.apps.pockettester.PocketTesterActivity;
 import com.abnamro.apps.pockettester.R;
 
+import org.junit.After;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static android.support.test.espresso.Espresso.onData;
@@ -37,6 +39,13 @@ public class NoteUITest {
     public ActivityTestRule<PocketTesterActivity> mActivityRule =
             new ActivityTestRule<>(PocketTesterActivity.class);
 
+    private List<Runnable> mAfterActions = new ArrayList<Runnable>();
+
+    @After
+    public void ExecuteAfterActions() {
+        mAfterActions.forEach(x -> x.run());
+    }
+
     /*
     This is an example of an UI test that does tests if an item can be added through the main screen and is
     saved after pressing the close button. That the item is saved is checked by the DataManager object.
@@ -56,11 +65,14 @@ public class NoteUITest {
 
         pressBack();
 
-        // Assert
         DataManager dataManager = DataManager.getInstance();
         List<NoteInfo> notes = dataManager.getNotes();
         NoteInfo note = notes.get(notes.size() - 1);
 
+        // Add Cleanup step that will run even if the assert fails
+        mAfterActions.add(() -> dataManager.removeNote(notes.size() - 1));
+
+        // Assert
         assertThat(note.getTitle(), is(title));
         assertThat(note.getText(), is(content));
         assertThat(note.getTopic().getTopicId(), is("Bug"));
