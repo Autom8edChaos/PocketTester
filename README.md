@@ -17,7 +17,7 @@ PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
 
 # Introduction
 
-After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need a proper application to test on. After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. 
+After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need to change that a little bit. After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. 
 
 And of course that App, PocketTester, needs to be tested. In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found down here. 
 
@@ -32,7 +32,7 @@ PocketTester, now you can write down your bugs, checks or test ideas; anytime, a
 
 ## Implementation
 
-PocketTester is loosely based on the tutorial app "Course NoteKeeper" of [Jim Wilson](https://jwhh.com/). I implemented the adaptations myself for this assignment to have a fun little toy application to fiddle around with. The app contains some basic functionality, but because it is nowhere near finished it will limit the scope for test automation and mimics an application in early development.  
+PocketTester is loosely based on the tutorial app "Course NoteKeeper" of [Jim Wilson](https://jwhh.com/). I implemented the adaptations myself for this assignment to have a fun little toy application to tinker around with. The app contains basic functionality, but because it is nowhere near finished it will limit the scope for test automation and mimics an application in early development.  
 
 Because the app is partially build on existing code, there are already some components that are not used (CourseModules), that are a bit clumsy (ItemTypeInfo) or that apply a pattern I would never implement that way (DataManager). That is great too, because it creates challenges you would encounter as a test automation engineer in a normal days work.
 
