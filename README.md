@@ -128,11 +128,13 @@ For example: We have no control over the [DataManager](/app/src/main/java/com/ab
   
 Mocking works great too for the following case: the GeneralSettings object is pending functionality. There exists no concrete implementation. Because the dependencies are injected by their interface, they can be mocked and are therefore testable.
 
-For this showcase, I wrote a new [SubscriptionPolicy](/app/src/main/java/com/abnamro/apps/pockettester/DataManager.java) class in Kotlin, two interfaces and the unit tests in [SubscriptionPolicyTest](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt) in Kotlin too. It shows:
+For this showcase, I wrote a new [SubscriptionPolicy](/app/src/main/java/com/abnamro/apps/pockettester/DataManager.java) class in Kotlin, two interfaces and the unit tests in [SubscriptionPolicyTest](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt) in Kotlin too. The SubscriptionPolicy counts the notes [somewhat more complex](/app/src/main/java/com/abnamro/apps/pockettester/SubscriptionPolicy.kt#L24) than necessary because the DataManager object is perfectly capable of returning all the notes at once with a single `DataManager.getNotes()` call, but I kept it that way because now we need to do more complex things with our mocks. Just as in real life.
+
+This showcase shows:
 - Understanding of dependency injection and inversion of control 
 - The application of [interfaces](/app/src/main/java/com/abnamro/apps/pockettester/IDataManager.java)
 - The use of [Mocks](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt#L34) in unit/integration tests
-- How to create independent, fast tests with always the same result
+- How to create independent, fast tests with reliable results
 - The application of the [Mockito](https://site.mockito.org/) library
 
 ## 5. The Icing on the Cake: Creating UI Tests
