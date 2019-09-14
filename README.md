@@ -135,15 +135,17 @@ For this showcase, I wrote a new [SubscriptionPolicy](/app/src/main/java/com/abn
 
 ## 5. The Icing on the Cake: Creating UI Tests
 
-This showcase shows the application of UI tests on PocketTester. It is the last showcase for a reason: It is recommended to implement the UI tests after the unit tests and integration tests are build for a feature. Now the team does have a better understanding of the application and all issues that could be found by the lower level tests are ironed out. The scope of the UI test is more clear and we can re-use code that was used for the other tests.
-However, you'll see that the tests in the UI tests are not completely UI driven. The first test, creating a new note, will enter a new note through the UI, but the test will check the existence of the note in the DataManager.
-The second test will first fetch the data from the DataManager, then click on the same test in the overview and compare the details to see if the detail screen is correctly implemented.
-By keeping the UI actions minimized, we get maintainable, stable and relative fast tests.
+This showcase shows the application of [UI tests](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java) on PocketTester. It is the last showcase for a reason: It is recommended to implement the UI tests after the unit tests and integration tests are build for a feature. Now the team does have a better understanding of the application and all issues that could be found by the lower level tests are ironed out. The scope of the UI test is more clear and we can re-use code that was used for the other tests.
 
-For these test, I used the native Espresso library because it is the de facto UI test library for Android. A quick pilot with the build-in TestingBluePrint template project showed me that the Espresso library is way faster then competing libraries like UiAutomator and Selenium type of libraries like Appium or Selendroid.   
+You'll see that the tests in the UI tests are not completely UI driven. This is purposely done, because we want to really only focus on the UI parts we want to test:  
+The first test, [creating a new note](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L55), will enter a new note through the UI, but the test will check the existence of the note in the DataManager.  
+The second test, [selecting a test from the overview](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L86), will first fetch the data from the DataManager, then click on the same test in the overview and compare the details to see if the detail screen is correctly implemented.
+By keeping the UI actions minimized, we get maintainable, stable and relative fast UI tests.
 
-In the NoteUITest shows:
-- The application of the AAA (Arrange, Act, Assert) pattern
+For these test, I used the native Espresso library because it is the de facto UI test library for Android. They are written in the language of the developers, which makes them easier to share within the team. A quick pilot with the build-in TestingBluePrint template project showed me that the Espresso library is many time faster then competing libraries like UiAutomator and Selenium type of libraries like Appium or Selendroid.   
+
+The NoteUITest will show:
+- The application of [the AAA](http://wiki.c2.com/?ArrangeActAssert) (Arrange, Act, Assert) pattern
 - The usage of Espresso patterns to interact with objects
 - The usage of Matchers to find the right type of objects and data
 - Tests that cleanup after themselves
@@ -151,9 +153,31 @@ In the NoteUITest shows:
 
 # Afterthoughts
 
-This was a fun assignment to do. I timeboxed the project at 8 hours of coding and used another 2 hours for documenting it properly. I am happy with the results and how the showcases have come into being. I learned a lot with this assignment: How Gradle is used, the Kotlin programming language, Android Studio, Espresso and other Android-own libraries.
-With each approach in this project, with every decision, there is a certain philosophy behind. It would be too much for both the reader as the writer to get into that amount of details, but if there are any questions, I am happy to answer them.
+This was a fun assignment to do. I timeboxed the project at 8 hours of coding and used another 2 hours for documenting it properly. I am happy with the results and how the showcases have come into being. I learned a lot with this assignment: How to use Gradle, the Kotlin programming language, Android Studio, Espresso, Hamcrest and other Android-own libraries. Working a long time in this field has it perks: you have learned to pick up a programming language, a new IDE or new libraries very fast. 
+
+There is a lot more to do and we didn't even touch mobile specific test cases: screen orientation, gestures, slow/no data connections, app switching, etc. And still, there is already a lot of material here. I couldn't cover each decision or philosophy behind certain approaches. It would be too much for both the reader as the writer to get into that amount of details. However, if there are any questions, I am happy to answer them.
 
 Bas M. Dam
 Test Automation Specialist
 bas.dam@performancearchitecten.nl
+
+# Reference Materials Used
+
+This is an incomplete list of reference materials I used during this assignment:
+[Android Studio Reference Guide](https://developer.android.com/studio/intro)
+[Android Documentation](https://developer.android.com/docs)
+[Kotlin Reference Guide](https://kotlinlang.org/docs/reference/)
+[Kotlin Cheat Sheet](https://blog.kotlin-academy.com/kotlin-cheat-sheet-1137588c75a)
+[JUnit Wiki](https://github.com/junit-team/junit4/wiki)
+[Working with Android Tools and Testing](https://app.pluralsight.com/library/courses/android-tools-testing/table-of-contents)
+[Android JUnit Parcelable model test](https://medium.com/@dbottillo/android-junit-parcelable-model-test-37a2f2ae18b1)
+[Using Android Parcel](https://dzone.com/articles/using-android-parcel)
+
+
+
+
+
+
+
+
+
