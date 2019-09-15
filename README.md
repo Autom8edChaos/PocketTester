@@ -1,32 +1,35 @@
 # Test assignment
 
-We are looking for Automation Engineers that have the mindset "only the sky is the limit" and "automation doesn't stop at testing, it's just a beginning!" ;)
+*We are looking for Automation Engineers that have the mindset "only the sky is the limit" and "automation doesn't stop at testing, it's just a beginning!" ;)*
 
-The purpose of this test assignment is to assess the applicant's automation skills, allowing him/her to show the best they can do and how fast they can learn.
-It is an open assignment. There is no the right answer and there is no end goal other than proving yourself. Surprise us!
+*The purpose of this test assignment is to assess the applicant's automation skills, allowing him/her to show the best they can do and how fast they can learn.
+It is an open assignment. There is no the right answer and there is no end goal other than proving yourself. Surprise us!*
 
-Make sure that you give detailed comments or descriptions of your tests.
+*Make sure that you give detailed comments or descriptions of your tests.
 When the assignment is complete, please push your solution to Github(Gitlab) and send us the link to hr.grid.adi@nl.abnamro.com.
-If you have any questions, please contact us at hr.grid.adi@nl.abnamro.com.
+If you have any questions, please contact us at hr.grid.adi@nl.abnamro.com.*
 
-Good luck.
+*Good luck.*
 
-PS. We don't expect you to spend weeks (and sleepless nights) on doing it. Lets see how far you can get in 6-10 hours. We want to see how you approach and solve problems.
+*PS. We don't expect you to spend weeks (and sleepless nights) on doing it. Lets see how far you can get in 6-10 hours. We want to see how you approach and solve problems.*
 
-PSPS. Please use mobile native tools. (Tests written on Java are accepted too)
+*PSPS. Please use mobile native tools. (Tests written on Java are accepted too)*
 
 # Introduction
 
-After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need to change that a little bit. After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. 
+After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need to change that a little bit. 
 
-And of course that App, PocketTester, needs to be tested. In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found down here. 
+![Notes Overview Screen](/images/reference_android.png)  
+*The somewhat empty App that came with the assignment*
+
+After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. And of course that App, PocketTester I'd like to call it, needs to be tested.  
+In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found below. 
 
 Due to the time constraints I will only focus on automated (functional) tests. There will be things that I really like but have to skip: static analysis tools, build pipelines, multi device testing and test approaches that encourage collaboration like Behaviour Driven Development.
 
 # PocketTester
 
-You are sitting in the train on your daily commute. While dozing off a little, you suddenly open your eyes. A great test idea just popped up in your head: "If we can mock the HTTP calls, we can test every state in
-the App without having to setup testdata on the server!". You want to note that idea down and directly share it with you colleagues, but how? Well, there is an app for that: PocketTester!
+You are sitting in the train on your daily commute. While dozing off a little, you suddenly open your eyes. A great test idea just popped up in your head: "If we can mock the HTTP calls, we can test every state in the App without having to setup testdata on the server!". You want to note that idea down and directly share it with you colleagues, but how? Well, there is an app for that: PocketTester!
 
 ![Notes Overview Screen](/images/PockerTester_overview.png)
 ![Notes Entry Screen](/images/PocketTester_new_note.png)
