@@ -24,7 +24,7 @@ After opening the App that comes with this assignment, I realized that it looked
 *The somewhat empty App that came with the assignment*
 
 After some thinking, I decided that I wanted to make a Note Taking app that could be used during testing. And of course that App, PocketTester I'd like to call it, needs to be tested.  
-In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found below. 
+In this assignment, I will take you through the different layers of test automation: Unit tests, integration tests and -everyones favorite- automated UI tests. However, I strongly believe that an adept test automation engineer is able to do more then only test automation, so there will also be passing some development stuff, the appliance of design patterns and software principles. I will provide links to the applicable sections in the code, but do not hesitate to clone the project yourself and run it on Android Studio. The installation instructions can be found below. 
 
 Due to the time constraints I will only focus on automated (functional) tests. There will be things that I really like but have to skip: static analysis tools, build pipelines, multi device testing and test approaches that encourage collaboration like Behaviour Driven Development.
 
