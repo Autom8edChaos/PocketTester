@@ -133,7 +133,7 @@ Mocking works great too for the following case: the GeneralSettings object is pe
 
 For this showcase, I wrote a new [SubscriptionPolicy](/app/src/main/java/com/abnamro/apps/pockettester/SubscriptionPolicy.kt) class in Kotlin, two interfaces and the unit tests in [SubscriptionPolicyTest](/app/src/test/java/com/abnamro/apps/pockettester/SubscriptionPolicyTest.kt) in Kotlin too. The SubscriptionPolicy counts the notes [somewhat more complex](/app/src/main/java/com/abnamro/apps/pockettester/SubscriptionPolicy.kt#L24) than necessary because the DataManager object is perfectly capable of returning all the notes at once with a single `DataManager.getNotes()` call, but I kept it that way because now we need to do more complex things with our mocks. Just as in real life.
 
-![100% Coverage on SubscriptionPolicy](/images/100_percent_test_coverage.png)  
+![100% Coverage on SubscriptionPolicy](/images/100_percent_line_coverage.png)  
 *100% statement coverage on the new class. :thumbsup:*
 
 This showcase shows:
