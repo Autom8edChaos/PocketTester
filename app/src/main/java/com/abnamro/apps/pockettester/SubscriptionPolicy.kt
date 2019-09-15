@@ -21,5 +21,5 @@ class SubscriptionPolicy constructor(val dataManager: IDataManager, val notifySe
     fun isAllowedToAddNewNotes() = getNotesCount() < notifySettings.noNewNotesAmount
     fun shouldShowWarning() = getNotesCount() >= notifySettings.warningAmount
 
-    fun getNotesCount() = dataManager.topics.sumBy { item -> dataManager.getNoteCount(item) }
+    private fun getNotesCount() = dataManager.topics.sumBy { item -> dataManager.getNoteCount(item) }
 }
