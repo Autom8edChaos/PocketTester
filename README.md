@@ -55,7 +55,7 @@ Because the app is partially build on existing code, there are already some comp
 1. Clone the project or download the zip.
 2. Open Android Studio and open the project
 
-To startup the application:
+### To startup the application:
 - Wait until Gradle is ready with retrieving dependencies and building the app
 - From the top bar, select App
 - From the top bar, select a valid emulation device like the Pixel 2 API 28
@@ -63,14 +63,14 @@ To startup the application:
 
 ![Run Unit Tests](/images/run_App.png)
 
-To run the unit tests:
+### To run the unit tests:
 - View the application in "Android View"
 - Open App > Java and try to see the package `com.abnamro.apps.pockettester (test)`
 - Right click on it and click the green Play button next to "Run tests in 'pockettester'"
 
 ![Run Unit Tests](/images/run_unitTests.png)
 
-To run all instrumented tests (integration and UI):
+### To run all instrumented tests (integration and UI):
 - From the top bar, select a valid emulation device like the Pixel 2 API 28
 - View the application in "Android View"
 - Open App > Java and try to see the package `com.abnamro.apps.pockettester (androidTest)`
@@ -94,7 +94,7 @@ In my opinion, a test automation engineer should not be afraid to get his hands 
 - Understand how commits, push/pull, branching and merging works
 
 ![Git Flow](/images/git_flow.png)  
-*The Git Flow of this Assignment*
+*The Git Flow of this Assignment at the moment of writing*
 
 ## 2. Unit testing
 
@@ -113,11 +113,11 @@ Unit tests are the bottom of the [test automation pyramid](https://martinfowler.
 
 Integration tests are tests where individual units are combined and tested as a group. Components that are not under test should be mocked so that they are not causing flakiness by interference with the components under test. In my opinion, integration tests are one of the most difficult test types. While you need a good amount of them, writing good integration tests is very hard because: 
 - It is a team or even inter-team activity (who is responsible?) 
-- When creating integration tests, you need to know the SUT very well
-- The scope of an integration test is often too broad or too narrow
+- When creating integration tests, you need to know the SUT very well to test the correct things
+- The scope of an integration test is often too broad or too narrow making them brittle and less valuable
 - For testing and mocking multiple application layers, you need to have a good architecture that every developer understand and applies
 
-For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test. You can still find a mistake in the comments: at first I thought that the JUnit testrunner did the mocking of the object, later I learned that it uses the Parcel object itself. (You see, integration tests are complex material).
+For this assignment, I wrote an [integration test](/app/src/androidTest/java/com/abnamro/apps/pockettester/Integration/ParcelIntegrationTest.java) on the external Parcel object. It shows the use of the Parcel object as an external dependency, but works still in isolation in our test. You can still find a mistake in the comments: at first I thought that the JUnit testrunner did the mocking of the object, later I learned that it uses the Parcel object itself and not a mocked version. (You see, integration tests are complex material).
 
 Integration tests are the middle layer of the test automation pyramid. There should be sufficient of them and be run as often as possible because they tend to break fast with architectural changes.
 
@@ -159,15 +159,15 @@ The NoteUITest will show:
 
 # Afterthoughts
 
-This was a fun assignment to do. I timeboxed the project at 8 hours of coding and used another 2 hours for documenting it properly. I am happy with the results and how the showcases have come into being. I learned a lot with this assignment: How to use Gradle, the Kotlin programming language, Android Studio, Espresso, Hamcrest and other Android-own libraries. Working a long time in this field has it perks: you have learned to pick up a programming language, a new IDE or new libraries very fast. 
+This was a fun assignment to do. I timeboxed the project at 8 hours of coding and used another 2 hours for documenting it properly. I am happy with the results and how the showcases have come into being. I learned a lot with this assignment: How to use Gradle, the Kotlin programming language, Android Studio, Espresso, Hamcrest and other Android-own libraries. Having experience in the field of test automation and software development has it perks: you have learned to pick up a programming language, a new IDE, the test implementation and new libraries very fast. 
 
-There is a lot more to do and we didn't even touch mobile specific test cases: screen orientation, gestures, slow/no data connections, app switching, etc. And still, there is already a lot of material here. I couldn't cover each decision or philosophy behind certain approaches. It would be too much for both the reader as the writer to get into that amount of details. However, if there are any questions, I am happy to answer them.
+There is a lot more to do and we didn't even touch mobile specific test cases: screen orientation, gestures, slow/no data connections, app switching, etc. And still, there is already a lot of material here. I couldn't cover each decision or philosophy behind certain approaches. It would be too much for both the reader as the writer to get into that amount of details. However, if there are any questions or if there are any ideas you want to share, I am happy to talk and elaborate.
 
 Bas M. Dam  
 Test Automation Specialist  
 bas.dam@performancearchitecten.nl
 
-# Reference Materials Used
+# Materials Used
 
 This is an incomplete list of reference materials I used during this assignment:  
 - [Android Studio Reference Guide](https://developer.android.com/studio/intro)
@@ -179,11 +179,9 @@ This is an incomplete list of reference materials I used during this assignment:
 - [Android JUnit Parcelable model test](https://medium.com/@dbottillo/android-junit-parcelable-model-test-37a2f2ae18b1)
 - [Using Android Parcel](https://dzone.com/articles/using-android-parcel)
 
-
-
-
-
-
-
-
-
+This is the software and tooling I used:
+- Android Studio for the main development
+- Chrome as my searchable, extended knowledge source
+- SourceTree for my version management and source control
+- Notepad++ for editting some of the text files
+- Greenshot for the screenshots
