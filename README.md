@@ -17,7 +17,8 @@ If you have any questions, please contact us at hr.grid.adi@nl.abnamro.com.*
 
 # Introduction
 
-After opening the App that comes with this assignment, I realized that it looked quite empty and it was lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need to change that a little bit. 
+Because I am doing my main development on a Windows machine (my MBP is from 2010 and starts to be a bit old for development), I choose to do the Android assignment.  
+After opening the App that comes with this assignment, I realized that it looked quite empty and lacking testable functionality for a proper showcase. And of course, there is not much fun in testing an application that does almost nothing, so we need to change that a little bit. 
 
 ![Notes Overview Screen](/images/reference_android.png)  
 *The somewhat empty App that came with the assignment*
