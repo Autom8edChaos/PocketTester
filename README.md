@@ -175,7 +175,8 @@ bas.dam@performancearchitecten.nl
 
 This is an incomplete list of reference materials I used during this assignment:  
 - [Android Studio Reference Guide](https://developer.android.com/studio/intro)
-- [Android Documentation](https://developer.android.com/docs)  
+- [Android Documentation](https://developer.android.com/docs)
+- [Android Studio Keyboard Shortcuts Reference](https://www.cheatography.com/kekc42/cheat-sheets/android-studio-windows-linux/pdf/)
 - [Kotlin Reference Guide](https://kotlinlang.org/docs/reference/)
 - [Kotlin Cheat Sheet](https://blog.kotlin-academy.com/kotlin-cheat-sheet-1137588c75a)
 - [JUnit Wiki](https://github.com/junit-team/junit4/wiki)
