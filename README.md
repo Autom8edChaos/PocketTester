@@ -169,7 +169,7 @@ There is a lot more to do and we didn't even touch mobile specific test cases: s
 
 Bas M. Dam  
 Test Automation Specialist  
-bas.dam@performancearchitecten.nl
+bas.dam@performancearchitecten.com
 
 # Materials Used
 
