@@ -152,7 +152,7 @@ The first test, [creating a new note](/app/src/androidTest/java/com/abnamro/apps
 The second test, [selecting a test from the overview](/app/src/androidTest/java/com/abnamro/apps/pockettester/UI/NoteUITest.java#L86), will first fetch the data from the DataManager, then click on the same test in the overview and compare the details to see if the detail screen is correctly implemented.
 By keeping the UI actions minimized, we get maintainable, stable and relative fast UI tests.
 
-For these test, I used the native Espresso library because it is the de facto UI test library for Android. They are written in the language of the developers, which makes them easier to share within the team. A quick pilot with the build-in TestingBluePrint template project showed me that the Espresso library is many time faster then competing libraries like UiAutomator and Selenium type of libraries like Appium or Selendroid.   
+For these test, I used the native Espresso library because it is the de facto UI test library for Android. They are written in the language of the developers, which makes them easier to share within the team. A quick pilot with the build-in TestingBluePrint template project showed me that the Espresso library is many times faster than competing libraries like UiAutomator and Selenium type of libraries like Appium or Selendroid.   
 
 The NoteUITest will show:
 - The application of [the AAA](http://wiki.c2.com/?ArrangeActAssert) (Arrange, Act, Assert) pattern
